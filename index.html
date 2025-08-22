@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos JavaScript</title>
+    <link rel="stylesheet" href="sytle.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Eventos JavaScript</h1>
+        </header>
+        
+        <main>
+            <div class="exercise">
+                <h2>1. Calculadora</h2>
+                <p>Calculadora que pida dos números y la operación a realizar (suma, resta, multiplicación, división) y muestre el resultado.</p>
+                <button onclick="calculadora()" class="btn btn-primary">Calcular</button>
+            </div>
+
+            <div class="exercise">
+                <h2>2. Temporizador</h2>
+                <p>Temporizador que cuente hacia atrás desde 10 segundos y muestre el tiempo restante en la pantalla.</p>
+                <button onclick="temporizador()" class="btn btn-secondary">Iniciar Temporizador</button>
+            </div>
+
+            <div class="exercise">
+                <h2>3. Suma de Array</h2>
+                <p>Función que reciba un array de números y devuelva su suma.</p>
+                <button onclick="suma()" class="btn btn-accent">Calcular Suma</button>
+            </div>
+
+            <div class="exercise">
+                <h2>4. Contador de Palabras</h2>
+                <p>Función que cuente el número de palabras en un texto ingresado por el usuario.</p>
+                <button onclick="contadorPalabras()" class="btn">Contar Palabras</button>
+            </div>
+        </main>
+    </div>
+    <script>
+        function calculadora() {
+
+            let operandoA;
+            let operandoB;
+            let resultado;
+            let operacion;
+
+            operandoA = parseInt(prompt("Introduce el primer número:"));
+            operandoB = parseInt(prompt("Introduce el segundo número:"));
+            operacion = prompt("Introduce la operación a realizar (suma, resta, mult, div):");
+
+            switch (operacion) {
+                case "suma":
+                    resultado = operandoA + operandoB;
+                    break;
+                case "resta":
+                    resultado = operandoA - operandoB;
+                    break;
+                case "mult":
+                    resultado = operandoA * operandoB;
+                    break;
+                case "div":
+                    resultado = operandoA / operandoB;
+                    break;
+                default:
+                    alert("Operación no válida");
+                    return;
+            }
+
+            alert("El resultado de la " + operacion + " es: " + resultado);
+        }
+        function temporizador() {
+            let tiempo = 10;
+            const intervalo = setInterval(() => {
+                if (tiempo > 0) {
+                    console.log("Tiempo restante: " + tiempo + " segundos");
+                    tiempo--;
+                } else {
+                    clearInterval(intervalo);
+                    console.log("¡Tiempo agotado!");
+                }
+            }, 1000);
+        }
+        function suma(){
+            let cantidadNumeros = parseInt(prompt("Ingresa cuantos numeros sumarás"));
+            let suma = 0;
+            for (let i=0; i<cantidadNumeros; i++){
+                let numero = parseInt(prompt("ingresa el numero " + (i+1)));
+                suma += numero;
+            }
+            alert("la suma es: " + suma);
+        }
+
+        function contadorPalabras() {
+            let texto = prompt("Ingresa un texto:");
+            let palabras = texto.split(/\s+/);
+            alert("El número de palabras es: " + palabras.length);
+        }
+    </script>
+
+</body>
+</html>
